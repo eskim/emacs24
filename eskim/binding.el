@@ -5,10 +5,16 @@
 
 
 (global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 (global-set-key (kbd "C-c C-g p") 'pweet-post)
 (global-set-key "\C-xp" 'eskim-ido-find-project)
 (global-set-key "\C-xg" 'magit-status)
+
+
+
+(global-set-key (kbd "<s-left>") 'winner-undo)
+(global-set-key (kbd "<s-right>") 'winner-redo)
 
 
 (global-set-key (kbd "M-z") 'zap-up-to-char)

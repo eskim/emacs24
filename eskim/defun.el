@@ -1,8 +1,8 @@
 (defun eskim-ido-find-project ()
   (interactive)
-  (find-file
+  (ido-find-file-in-dir
    (concat "~/workspace/" (ido-completing-read "Project: "
-                           (directory-files "~/workspace/" nil "^[^.]")))))
+                           (directory-files "~/workspace/" nil "^[^.]")))) "*")
 
 
 ;; borrowed from 

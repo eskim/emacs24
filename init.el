@@ -2,19 +2,18 @@
 (defvar mswindows-p (string-match "windows" (symbol-name system-type)))
 (defvar macosx-p (string-match "darwin" (symbol-name system-type)))
 
+(add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (require 'package)
 (setq package-archives (cons '("tromey" . "http://tromey.com/elpa/") package-archives))
 (package-initialize)
 
-(add-to-list 'load-path "~/.emacs.d")
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-
 (load "eskim/global.el")
 (load "eskim/defun.el")
 (load "eskim/binding.el")
-(load "eskim/theme.el")
 (load "eskim/proglang.el")
+(load "eskim/misc.el")
 
 (require 'el-get)
 
@@ -22,6 +21,9 @@
       '(auto-complete
         zencoding-mode
         smex
+        zenburn-theme
+        ;; (:name solarized-theme :type elpa
+        ;;        :after (lambda () (load-theme 'solarized-dark)))
         (:name ruby-mode 
                :type elpa
                :load "ruby-mode.el"
@@ -33,6 +35,14 @@
         (:name haml-mode :type elpa)
         (:name sass-mode :type elpa)
         (:name magit :type elpa)
+        (:name deft
+               :type elpa
+               :after (lambda ()
+                        (progn
+                          (setq deft-extension "md")
+                          (setq deft-directory "~/Dropbox/notes")
+                          (setq deft-text-mode 'markdown-mode))))
+
         (:name rvm
                :type git
                :url "http://github.com/djwhitt/rvm.el.git"
@@ -56,7 +66,7 @@
 (el-get 'sync my-packages)
 
 
-
+(load "eskim/theme.el")
 
 
 ;; ido
@@ -65,3 +75,18 @@
 (setq ido-enable-flex-matching t)
 
 
+;; winner
+(when (fboundp 'winner-mode)
+  (winner-mode 1))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes (quote ("9cdf9fb94f560902b567b73f65c2ed4e5cfbaafe" default))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

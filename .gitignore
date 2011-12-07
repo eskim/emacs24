@@ -1,4 +1,2 @@
-el-get
-ac-comphist.dat
-url/cookies
-elpa
+.DS_Store
+custom.el
