@@ -19,9 +19,18 @@
 
 (setq el-get-sources
       '(auto-complete
-        zencoding-mode
+        (:name zencoding-mode
+               :after (lambda ()
+                          (add-hook 'html-mode-hook (lambda ()
+                                                      (zencoding-mode 1)
+                                                      (define-key zencoding-mode-keymap (kbd "M-[") 'zencoding-expand-line)))))
+                          
         smex
         zenburn-theme
+        quack
+        (:name tree-mode :type git :url "https://github.com/emacsmirror/tree-mode.git")
+        (:name windata :type git :url "https://github.com/emacsmirror/windata.git")
+        (:name dirtree :type git :url "https://github.com/zkim/emacs-dirtree.git")
         ;; (:name solarized-theme :type elpa
         ;;        :after (lambda () (load-theme 'solarized-dark)))
         (:name ruby-mode 
@@ -53,6 +62,14 @@
                :type git
                :url "https://github.com/eschulte/rhtml.git"
                :features rhtml-mode)
+        (:name sws-mode
+               :type git
+               :url "https://github.com/brianc/jade-mode.git"
+               :features sws-mode)
+        (:name jade-mode
+               :type git
+               :url "https://github.com/brianc/jade-mode.git"
+               :features jade-mode)
         (:name markdown-mode
                :type elpa
 	       :load "markdown-mode.el"

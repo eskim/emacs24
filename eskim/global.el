@@ -1,3 +1,5 @@
+(push "/usr/local/bin" exec-path)
+
 ;;----------------------------------------------------------------------
 ;; General Settings
 ;;----------------------------------------------------------------------
@@ -26,7 +28,7 @@
 (column-number-mode 1)                  ;show column number
 ;; (global-font-lock-mode 1)               ;Color syntax highlighting
 (setq font-lock-maximum-decoration t)   ;why not?
-(add-hook 'text-mode-hook 'auto-fill-mode)  ;auto-fill
+;; (add-hook 'text-mode-hook 'auto-fill-mode)  ;auto-fill
 (setq transient-mark-mode t)            ;highlights selections
 (setq-default truncate-lines t)         ;no wrap
 (recentf-mode 1)                        ;recent edited file in menu
@@ -40,6 +42,8 @@
 (line-number-mode t)
 (setq-default indent-tabs-mode nil)
 (setq indent-tabs-mode nil)
+(setq tab-width 2)
+
 
 ;;----------------------------------------------------------------------
 ;; Word completion customizations
